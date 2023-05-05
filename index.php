@@ -9,24 +9,17 @@
 </head>
 <body class="vh-100 d-flex justify-content-center align-items-center">
     <div >
-        <h1>Password Generator</h1>
-            <form action="" method="get">
-                <label for="length">Length:</label>
-                <input type="number" id="length" name="length" min="1" max="100">
-                <button type="submit">Generate</button>
-            </form>
-            <?php
+    <h1>Password Generator</h1>
+	<form action="index.php" method="get">
+		<label for="length">Length:</label>
+		<input type="number" id="length" name="length" min="1" max="100">
+		<button type="submit">Generate</button>
+	</form>
+	<?php
+		include 'functions.php';
 		if (isset($_GET['length'])) {
 			$password = generatePassword($_GET['length']);
 			echo "<p>Your password is: $password</p>";
-		}
-		function generatePassword($length) {
-			$characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+';
-			$randomString = '';
-			for ($i = 0; $i < $length; $i++) {
-				$randomString .= $characters[rand(0, strlen($characters) - 1)];
-			}
-			return $randomString;
 		}
 	?>
     </div>
